@@ -1,16 +1,20 @@
 const express = require('express');
 const app = express();
+const router = express.Router();
 
-app.get('/', (req , res) => {
-    res.send('Hello');
+router.get('/index', (req , res) => {
+    res.json({message: 'Hello'});
 });
 
-app.get('/hello', (req, res) => {
+router.get('/hello', (req, res) => {
     res.send("World");
 });
 
-const PORT : String = process.env.PORT || '3000';
+app.use(router);
+
+const PORT = 3334;
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port: ${PORT}.`);
 });
+   
